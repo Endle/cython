@@ -73,7 +73,7 @@ else
   # Install more requirements
   if [ -n "${PYTHON_VERSION##*-dev}" ]; then
     if [ -z "${BACKEND##*cpp*}" ]; then
-      python -m pip install pythran==0.9.5 || exit 1
+      python -m pip install pythran || exit 1
     fi
 
     if [ "$BACKEND" != "cpp" -a -n "${PYTHON_VERSION##pypy*}" -a -n "${PYTHON_VERSION##2*}" -a -n "${PYTHON_VERSION##*3.4}" ]; then
