@@ -62,7 +62,7 @@ elif [ -n "${PYTHON_VERSION##*-dev}" ]; then
 fi
 
 if [ -z "${PYTHON_VERSION##2.7}" ]; then
-  pip install pythran==0.95 || exit 1
+  pip install pythran==0.9.5 || exit 1
 else
   pip install pythran || exit 1
 fi
