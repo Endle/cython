@@ -61,6 +61,12 @@ elif [ -n "${PYTHON_VERSION##*-dev}" ]; then
   fi
 fi
 
+if [ -z "${PYTHON_VERSION##2.7}" ]; then
+  pip install pythran==0.95 || exit 1
+else
+  pip install pythran || exit 1
+fi
+
 if [ "$TEST_CODE_STYLE" == "1" ]; then
   STYLE_ARGS="--no-unit --no-doctest --no-file --no-pyregr --no-examples";
 else
@@ -71,7 +77,7 @@ else
   if $PYTHON_DBG -V >&2; then CFLAGS="-O0 -ggdb" $PYTHON_DBG runtests.py -vv --no-code-style Debugger --backends=$BACKEND; fi;
 
   # Install more requirements
-  if [ -n "${PYTHON_VERSION##*-dev}" ]; then
+#   if [ -n "${PYTHON_VERSION##*-dev}" ]; then
 #     if [ -z "${BACKEND##*cpp*}" ]; then
 #       python -m pip install pythran || exit 1
 #     fi
