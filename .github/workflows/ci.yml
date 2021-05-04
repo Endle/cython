@@ -23,9 +23,9 @@ jobs:
         #
         # FIXME: 'cpp' tests seems to fail due to compilation errors (numpy_pythran_unit)
         # in all python versions and test failures (builtin_float) in 3.5<
-        os: [ubuntu-18.04]
-        backend: [c, cpp]
-        python-version: [2.7, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10-dev]
+#         os: [ubuntu-18.04]
+#         backend: [c, cpp]
+#         python-version: [2.7, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10-dev]
         env: [{}]
 
         include:
@@ -47,11 +47,11 @@ jobs:
             extra_hash: "-coverage"
             timeout-minutes: 180
 #           Limited API
-          - os: ubuntu-18.04
-            python-version: 3.6
-            backend: "c,cpp"
-            env: { LIMITED_API: "--limited-api", EXCLUDE: "--no-file" }
-            extra_hash: "-limited_api"
+#           - os: ubuntu-18.04
+#             python-version: 3.6
+#             backend: "c,cpp"
+#             env: { LIMITED_API: "--limited-api", EXCLUDE: "--no-file" }
+#             extra_hash: "-limited_api"
 #           - os: ubuntu-18.04
 #             python-version: 3.7
 #             backend: "c,cpp"
