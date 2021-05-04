@@ -44,81 +44,82 @@ jobs:
             python-version: 3.7
             backend: "c,cpp"
             env: { COVERAGE: 1 }
+            extra_hash: "-coverage"
             timeout-minutes: 180
-          # Limited API
+#           Limited API
           - os: ubuntu-18.04
             python-version: 3.6
             backend: "c,cpp"
             env: { LIMITED_API: "--limited-api", EXCLUDE: "--no-file" }
             extra_hash: "-limited_api"
-          - os: ubuntu-18.04
-            python-version: 3.7
-            backend: "c,cpp"
-            env: { LIMITED_API: "--limited-api", EXCLUDE: "--no-file" }
-            extra_hash: "-limited_api"
-          - os: ubuntu-18.04
-            python-version: 3.8
-            backend: "c,cpp"
-            env: { LIMITED_API: "--limited-api", EXCLUDE: "--no-file" }
-            extra_hash: "-limited_api"
-          # Stackless
-          - os: ubuntu-18.04
-            python-version: 2.7
-            backend: c
-            env: { STACKLESS: true, PY: 2 }
-            extra_hash: "-stackless"
-          - os: ubuntu-18.04
-            python-version: 3.6
-            backend: c
-            env: { STACKLESS: true, PY: 3 }
-            extra_hash: "-stackless"
-          # Pypy
-          - os: ubuntu-18.04
-            python-version: pypy-2.7
-            backend: c
-            env: {}
-          - os: ubuntu-18.04
-            python-version: pypy-3.7
-            backend: c
-            env: {}
-          # Pypy [allowed-failures] - These specifically test known bugs
-          - os: ubuntu-18.04
-            python-version: pypy-2.7
-            backend: c
-            env:
-              {
-                EXCLUDE: "--listfile=tests/pypy_bugs.txt --listfile=tests/pypy2_bugs.txt bugs",
-              }
-            allowed_failure: true
-            extra_hash: "-allowed_failures"
-          - os: ubuntu-18.04
-            python-version: pypy-3.7
-            backend: c
-            env: { EXCLUDE: "--listfile=tests/pypy_bugs.txt bugs" }
-            allowed_failure: true
-            extra_hash: "-allowed_failures"
-          # Coverage - Disabled due to taking too long to run
-          # - os: ubuntu-18.04
-          #   python-version: 3.7
-          #   backend: "c,cpp"
-          #   env: { COVERAGE: 1 }
-          #   extra_hash: '-coverage'
+#           - os: ubuntu-18.04
+#             python-version: 3.7
+#             backend: "c,cpp"
+#             env: { LIMITED_API: "--limited-api", EXCLUDE: "--no-file" }
+#             extra_hash: "-limited_api"
+#           - os: ubuntu-18.04
+#             python-version: 3.8
+#             backend: "c,cpp"
+#             env: { LIMITED_API: "--limited-api", EXCLUDE: "--no-file" }
+#             extra_hash: "-limited_api"
+#           # Stackless
+#           - os: ubuntu-18.04
+#             python-version: 2.7
+#             backend: c
+#             env: { STACKLESS: true, PY: 2 }
+#             extra_hash: "-stackless"
+#           - os: ubuntu-18.04
+#             python-version: 3.6
+#             backend: c
+#             env: { STACKLESS: true, PY: 3 }
+#             extra_hash: "-stackless"
+#           # Pypy
+#           - os: ubuntu-18.04
+#             python-version: pypy-2.7
+#             backend: c
+#             env: {}
+#           - os: ubuntu-18.04
+#             python-version: pypy-3.7
+#             backend: c
+#             env: {}
+#           # Pypy [allowed-failures] - These specifically test known bugs
+#           - os: ubuntu-18.04
+#             python-version: pypy-2.7
+#             backend: c
+#             env:
+#               {
+#                 EXCLUDE: "--listfile=tests/pypy_bugs.txt --listfile=tests/pypy2_bugs.txt bugs",
+#               }
+#             allowed_failure: true
+#             extra_hash: "-allowed_failures"
+#           - os: ubuntu-18.04
+#             python-version: pypy-3.7
+#             backend: c
+#             env: { EXCLUDE: "--listfile=tests/pypy_bugs.txt bugs" }
+#             allowed_failure: true
+#             extra_hash: "-allowed_failures"
+#           # Coverage - Disabled due to taking too long to run
+#           # - os: ubuntu-18.04
+#           #   python-version: 3.7
+#           #   backend: "c,cpp"
+#           #   env: { COVERAGE: 1 }
+#           #   extra_hash: '-coverage'
 
-          # MacOS sub-jobs
-          # ==============
-          - os: macos-10.15
-            python-version: 2.7
-            backend: "c,cpp"
-            env: { MACOSX_DEPLOYMENT_TARGET: 10.14 }
-          - os: macos-10.15
-            python-version: 3.8
-            backend: "c,cpp"
-            env: { MACOSX_DEPLOYMENT_TARGET: 10.14 }
+#           # MacOS sub-jobs
+#           # ==============
+#           - os: macos-10.15
+#             python-version: 2.7
+#             backend: "c,cpp"
+#             env: { MACOSX_DEPLOYMENT_TARGET: 10.14 }
+#           - os: macos-10.15
+#             python-version: 3.8
+#             backend: "c,cpp"
+#             env: { MACOSX_DEPLOYMENT_TARGET: 10.14 }
 
     # This defaults to 360 minutes (6h) which is way too long and if a test gets stuck, it can block other pipelines.
     # From testing, the runs tend to take ~20 minutes, so a limit of 30 minutes should be enough. This can always be
     # changed in the future if needed.
-    timeout-minutes: 30
+#     timeout-minutes: 30
     runs-on: ${{ matrix.os }}
 
     env:
