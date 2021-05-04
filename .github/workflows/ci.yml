@@ -43,8 +43,8 @@ jobs:
           - os: ubuntu-18.04
             python-version: 3.7
             backend: "c,cpp"
-            env: { COVERAGE: 1 }
-            extra_hash: "-coverage"
+            env: { STATIC_ANALYSIS: 1 }
+            extra_hash: "-static_analysis"
             timeout-minutes: 180
 #           Limited API
 #           - os: ubuntu-18.04
